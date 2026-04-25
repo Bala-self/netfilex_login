@@ -1,0 +1,836 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Signup Page ─────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+.signup-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.signup-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/9134db96-10d6-4a64-a619-a21da22f8999/images/staticpage/bg-image.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.signup-bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.signup-header {
+  position: relative;
+  z-index: 10;
+  padding: 28px 56px;
+}
+
+.netflix-logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #e50914;
+  letter-spacing: -1px;
+  font-style: italic;
+  user-select: none;
+}
+
+.signup-main {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.signup-card {
+  background: rgba(0, 0, 0, 0.82);
+  border-radius: 4px;
+  padding: 60px 68px 40px;
+  width: 100%;
+  max-width: 450px;
+  backdrop-filter: blur(2px);
+}
+
+.signup-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.signup-sub {
+  font-size: 1rem;
+  color: #b3b3b3;
+  margin-bottom: 24px;
+}
+
+.api-error-box {
+  background: #e87c03;
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.api-success-box {
+  background: #2d7a2d;
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.float-label-wrap {
+  position: relative;
+}
+
+.float-input {
+  width: 100%;
+  height: 50px;
+  background: #333;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 16px 4px;
+  font-size: 1rem;
+  color: #fff;
+  outline: none;
+  transition: background 0.15s;
+  border-bottom: 2px solid transparent;
+}
+
+.float-input:focus {
+  background: #454545;
+  border-bottom: 2px solid #aaa;
+}
+
+.has-error .float-input {
+  border-bottom: 2px solid #e87c03;
+}
+
+.float-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #8c8c8c;
+  pointer-events: none;
+  transition: all 0.15s ease;
+}
+
+.float-input:focus + .float-label,
+.float-input.has-value + .float-label {
+  top: 10px;
+  transform: none;
+  font-size: 0.72rem;
+  color: #aaa;
+}
+
+.field-error {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: #e87c03;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-error i {
+  font-style: normal;
+}
+
+.signup-btn {
+  width: 100%;
+  height: 50px;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-btn:hover:not(:disabled) {
+  background: #f40612;
+}
+
+.signup-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.signup-footer {
+  margin-top: 36px;
+  font-size: 1rem;
+  color: #737373;
+}
+
+.signin-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signin-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .signup-header {
+    padding: 20px 24px;
+  }
+  .netflix-logo {
+    font-size: 1.8rem;
+  }
+  .signup-card {
+    padding: 40px 24px 32px;
+  }
+  .signup-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* ── Login Page ─────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+/* Root */
+.login-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Background */
+.login-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/9134db96-10d6-4a64-a619-a21da22f8999/images/staticpage/bg-image.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.login-bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* Header */
+.login-header {
+  position: relative;
+  z-index: 10;
+  padding: 28px 56px;
+}
+
+.netflix-logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #e50914;
+  letter-spacing: -1px;
+  font-style: italic;
+  user-select: none;
+}
+
+/* Main */
+.login-main {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Card */
+.login-card {
+  background: rgba(0, 0, 0, 0.82);
+  border-radius: 4px;
+  padding: 60px 68px 40px;
+  width: 100%;
+  max-width: 450px;
+  backdrop-filter: blur(2px);
+}
+
+.login-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+/* API Error */
+.api-error-box {
+  background: #e87c03;
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.api-error-icon {
+  font-size: 1.1rem;
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Float Label */
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.float-label-wrap {
+  position: relative;
+}
+
+.float-input {
+  width: 100%;
+  height: 50px;
+  background: #333;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 16px 4px;
+  font-size: 1rem;
+  color: #fff;
+  outline: none;
+  transition: background 0.15s;
+  border-bottom: 2px solid transparent;
+}
+
+.float-input:focus {
+  background: #454545;
+  border-bottom: 2px solid #aaa;
+}
+
+.has-error .float-input {
+  border-bottom: 2px solid #e87c03;
+}
+
+.float-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #8c8c8c;
+  pointer-events: none;
+  transition: all 0.15s ease;
+}
+
+.float-input:focus + .float-label,
+.float-input.has-value + .float-label {
+  top: 10px;
+  transform: none;
+  font-size: 0.72rem;
+  color: #aaa;
+}
+
+.field-error {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: #e87c03;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-error i {
+  font-style: normal;
+}
+
+/* Sign In Button */
+.signin-btn {
+  width: 100%;
+  height: 50px;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signin-btn:hover:not(:disabled) {
+  background: #f40612;
+}
+
+.signin-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.btn-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form Options */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #b3b3b3;
+  cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+  accent-color: #e50914;
+  width: 14px;
+  height: 14px;
+}
+
+.need-help {
+  font-size: 0.82rem;
+  color: #b3b3b3;
+  text-decoration: none;
+}
+
+.need-help:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.login-footer {
+  margin-top: 36px;
+  font-size: 1rem;
+  color: #737373;
+}
+
+.new-to-netflix {
+  color: #737373;
+}
+
+.signup-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* reCAPTCHA note */
+.recaptcha-note {
+  margin-top: 16px;
+  font-size: 0.78rem;
+  color: #8c8c8c;
+  line-height: 1.5;
+}
+
+.learn-more {
+  color: #0071eb;
+  cursor: pointer;
+}
+
+.learn-more:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .login-header {
+    padding: 20px 24px;
+  }
+  .netflix-logo {
+    font-size: 1.8rem;
+  }
+  .login-card {
+    padding: 40px 24px 32px;
+  }
+  .login-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* ── Dashboard Page ───────────────────────────────────────────────────── */
+
+/* Root */
+.dashboard-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Background video */
+.dashboard-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Overlay */
+.dashboard-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+/* Content */
+.dashboard-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.netflix-logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #e50914;
+  letter-spacing: -1px;
+  font-style: italic;
+  user-select: none;
+}
+
+/* Welcome Message */
+.welcome-section {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.welcome-subtitle {
+  font-size: 1.2rem;
+  color: #e5e5e5;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.profile-section {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.profiles-title {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 28px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.profiles-grid {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.profile-pic {
+  width: 160px;
+  height: 160px;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.profile-card:hover .profile-pic {
+  transform: scale(1.08);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.profile-name {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  color: #e5e5e5;
+  transition: color 0.25s ease;
+}
+
+.profile-card:hover .profile-name {
+  color: #fff;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-primary {
+  background: #e50914;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #f40612;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: #333;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.btn-secondary:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: #e50914;
+  color: #fff;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+}
+
+.btn-danger:hover {
+  background: #f40612;
+  transform: translateY(-2px);
+}
+
+/* Logout Button */
+.logout-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+/* Footer */
+.dashboard-footer {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: auto;
+  margin-bottom: 40px;
+  color: #b3b3b3;
+  font-size: 0.85rem;
+  animation: fadeInUp 0.8s ease 0.5s both;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .dashboard-content {
+    padding: 20px;
+  }
+  
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+  
+  .profiles-title {
+    font-size: 1.2rem;
+  }
+  
+  .profiles-grid {
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  .profile-card {
+    cursor: default;
+  }
+  
+  .profile-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .profile-card:hover .profile-pic {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  
+  .profile-pic {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .dashboard-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
