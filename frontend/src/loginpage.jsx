@@ -43,8 +43,9 @@ function LoginPage() {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:3000/login", {
-        email: form.email,
+const BASE = import.meta.env.VITE_API_URL;
+const res = await axios.post(`${BASE}/login`, { 
+         email: form.email,
         password: form.password,
       });
       sessionStorage.setItem("user", JSON.stringify(res.data.user));

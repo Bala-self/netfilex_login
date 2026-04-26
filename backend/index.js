@@ -3,16 +3,18 @@ const cors = require("cors");
 const app = express();
 const port = 3000;
 
-app.use(cors({ origin: "http://localhost:5173" }));
-app.use(express.json());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://your-app-name.vercel.app" 
+  ]
+}));app.use(express.json());
 
-// Mock user database
 const MOCK_USERS = [
   { email: "user@netflix.com", password: "password123", username: "Netflix User" },
   { email: "admin@netflix.com", password: "admin123", username: "Admin" },
 ];
 
-// POST /login
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
@@ -36,7 +38,7 @@ app.post("/login", (req, res) => {
   });
 });
 
-// POST /signup
+
 app.post("/signup", (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
 

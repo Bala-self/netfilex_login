@@ -56,7 +56,8 @@ function Signup() {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:3000/signup", form);
+const BASE = import.meta.env.VITE_API_URL;
+const res = await axios.post(`${BASE}/signup`, form);
       setApiSuccess(res.data.message + " Redirecting to login...");
       setTimeout(() => navigate("/login"), 2000);
     } catch (err) {
